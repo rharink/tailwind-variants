@@ -1,7 +1,5 @@
 import resolveConfig from "tailwindcss/resolveConfig";
 
-import {generateTypes} from "./generator";
-
 const regExp = {
   tv: /tv\s*\((.*?)\)/gs,
   tvExtend: /extend:\s*\w+(,| )\s*/,
@@ -252,9 +250,6 @@ const getExtensions = (files) => {
 
 export const withTV = (tailwindConfig) => {
   let config = resolveConfig(tailwindConfig);
-
-  // generate types
-  generateTypes(config.theme);
 
   // invalid content files
   if (isEmpty(config.content?.files) || !isArray(config.content.files)) return config;
